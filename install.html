@@ -1,0 +1,11 @@
+<script src="//api.bitrix24.com/api/v1/"></script>
+<script>
+	console.log('Teste 1', window.BX24);
+	window.BX24.install(() => {
+		console.log('Teste 2');
+		window.BX24.callMethod('user.current', {}, (res) => {
+			alert('Greetings from my Hello World App, ' + res.data().NAME + '!');
+			window.BX24.installFinish();
+		})
+	})
+</script>

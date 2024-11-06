@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="//api.bitrix24.com/api/v1/"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello World App</title>
@@ -20,6 +21,24 @@
     </style>
   </head>
   <body>
+    <script>BX24.init(() => {
+      BX24.callMethod('user.get', { ID: 10 }, (result) => {
+        console.log(result)
+          if (result.error())
+          {
+              console.error(result.error());
+          }
+          else if (result.data())
+          {
+              const user = result.data()[0];
+              if (user)
+              {
+                  alert('User №' + user.ID + ' is named ' + user.NAME);
+              }
+          }
+      });
+  });
+  </script>
     <h1>Hello, World!</h1>
   </body>
 </html>
