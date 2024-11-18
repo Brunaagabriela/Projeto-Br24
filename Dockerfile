@@ -5,5 +5,8 @@ FROM nginx:alpine
 COPY index.html /usr/share/nginx/html/
 COPY install.html /usr/share/nginx/html/
 
+# Configure Nginx routes to serve index and install pages
+COPY default.conf /etc/nginx/conf.d/
+
 # Expose port 80
 EXPOSE 80

@@ -1,21 +1,21 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
 
 // Middleware to parse POST data
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 
 // POST route
-app.post('/', (req, res) => {
-    // Process the request data if needed
-    const data = req.body; // assume you receive some data
-    // Redirect to a GET route
-    res.redirect('https://brunagabriela-front.sa.ngrok.io');
+app.post("/", (req, res) => {
+	// Redirect to a GET route
+	console.log("Received");
+	res.redirect("https://teste-1.sa.ngrok.io");
 });
-app.post('/install', (req, res) => {
-    res.redirect('https://brunagabriela-front.sa.ngrok.io/install.html');
+app.post("/install", (req, res) => {
+	console.log("Installing");
+	res.redirect("https://teste-1.sa.ngrok.io/install");
 });
 
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+	console.log(`Server running at http://localhost:${port}`);
 });

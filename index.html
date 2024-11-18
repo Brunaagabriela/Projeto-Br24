@@ -15,30 +15,35 @@
         font-family: Arial, sans-serif;
         background-color: #f4f4f4;
       }
+
       h1 {
         color: #333;
       }
     </style>
   </head>
   <body>
-    <script>BX24.init(() => {
-      BX24.callMethod('user.get', { ID: 10 }, (result) => {
-        console.log(result)
-          if (result.error())
-          {
-              console.error(result.error());
-          }
-          else if (result.data())
-          {
-              const user = result.data()[0];
-              if (user)
-              {
-                  alert('User №' + user.ID + ' is named ' + user.NAME);
-              }
-          }
+    <script>
+      console.log(BX24);
+      BX24.init(function () {
+        console.log('init');
+        BX24.installFinish();
       });
-  });
-  </script>
+
+      BX24.init(() => {
+        BX24.callMethod('user.get', { ID: 10 }, (result) => {
+          console.log(result)
+          if (result.error()) {
+            console.error(result.error());
+          }
+          else if (result.data()) {
+            const user = result.data()[0];
+            if (user) {
+              alert('User №' + user.ID + ' is named ' + user.NAME);
+            }
+          }
+        });
+      });
+    </script>
     <h1>Hello, World!</h1>
   </body>
 </html>
