@@ -1,11 +1,17 @@
-<script src="//api.bitrix24.com/api/v1/"></script>
-<script>
-	console.log('Teste 1', window.BX24);
-	window.BX24.install(() => {
-		console.log('Teste 2');
-		window.BX24.callMethod('user.current', {}, (res) => {
-			alert('Greetings from my Hello World App, ' + res.data().NAME + '!');
-			window.BX24.installFinish();
-		})
-	})
-</script>
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<script src="//api.bitrix24.com/api/v1/"></script>
+		<script>
+			BX24.init(function () {
+				BX24.installFinish();
+			});
+		</script>
+		<title>Teste</title>
+	</head>
+	<body>
+		<h1>Teste</h1>
+		<p>Teste de instalação</p>
+	</body>
+</html>
