@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script src="//api.bitrix24.com/api/v1/"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Perfil Básico</title>
+<!-- Link para o arquivo CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div id="user-info" class="profile-card">
+    Carregando informações...
+</div>
+
+<script>
+    BX24.init(function () {
+     BX24.callMethod('user.current', {}, function (result) {
+        if (!result.error()) {
+         const user = result.data();
+         document.getElementById('user-info').innerHTML = `
+            <img src="${user.PERSONAL_PHOTO}" alt="Foto de Perfil" />
+            <h1>${user.NAME} ${user.LAST_NAME}</h1>
+            <p><strong>Email:</strong> ${user.EMAIL}</p>
+            <p><strong>Departamento:</strong> ${user.UF_DEPARTMENT_NAME || 'Não informado'}</p>
+            <p>Obrigado por acessar o teste da B2🚀</p>
+         `;
+        } else {
+         document.getElementById('user-info').innerText = "Erro ao carregar informações.";
+        }
+     });
+    });
+</script>
+</body>
+
+</html>

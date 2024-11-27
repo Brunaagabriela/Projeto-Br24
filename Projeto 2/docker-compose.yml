@@ -1,0 +1,9 @@
+
+services:
+# web2 é o nome do container que vai hospedar os arquivos da aplicação
+    web2:
+        build: .
+        ports:
+            - "8080:80"
+        volumes:
+            - ./src:/usr/share/nginx/html
